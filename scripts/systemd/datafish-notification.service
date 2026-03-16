@@ -1,0 +1,22 @@
+[Unit]
+Description=DataFish Notification Service (Go)
+After=network.target
+
+[Service]
+Type=simple
+User=ec2-user
+WorkingDirectory=/home/ec2-user/DataFish/notification-service
+ExecStart=/home/ec2-user/DataFish/notification-service/notification-service
+Restart=always
+RestartSec=10
+Environment="PORT=8083"
+Environment="DD_SERVICE=datafish-notification-service"
+
+# Logging
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=datafish-notification
+
+[Install]
+WantedBy=multi-user.target
+

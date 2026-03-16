@@ -1,0 +1,20 @@
+[Unit]
+Description=DataFish Inventory Service
+After=network.target
+
+[Service]
+Type=simple
+User=ec2-user
+WorkingDirectory=/home/ec2-user/DataFish/inventory-service
+ExecStart=/usr/bin/java -jar /home/ec2-user/DataFish/inventory-service/target/inventory-service-1.0.0.jar
+Restart=always
+RestartSec=5
+Environment="PORT=8085"
+Environment="DD_SERVICE=datafish-inventory-service"
+
+[Install]
+WantedBy=multi-user.target
+
+
+
+

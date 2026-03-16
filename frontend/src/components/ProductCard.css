@@ -1,0 +1,127 @@
+.product-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  transition: all 0.2s;
+}
+
+.product-image-container {
+  position: relative;
+  background: linear-gradient(135deg, var(--bg-darker) 0%, var(--panel) 100%);
+  padding: 20px;
+  text-align: center;
+  border-bottom: 3px solid var(--border);
+  min-height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.product-image {
+  max-width: 100%;
+  max-height: 180px;
+  object-fit: contain;
+  animation: swim 3s ease-in-out infinite;
+  filter: drop-shadow(0 0 15px rgba(0, 217, 255, 0.4));
+}
+
+.pixel-fish-icon {
+  font-size: 60px;
+  animation: swim 3s ease-in-out infinite;
+  filter: drop-shadow(0 0 10px rgba(0, 217, 255, 0.5));
+}
+
+.fallback-icon {
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+
+.featured-badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: var(--accent);
+  color: var(--bg-darker);
+  padding: 5px 10px;
+  font-size: 8px;
+  border: 2px solid var(--bg-darker);
+  box-shadow: 0 0 10px var(--accent);
+}
+
+.product-info {
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.product-name {
+  font-size: 14px;
+  color: var(--primary);
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+
+.product-meta {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+}
+
+.category-badge {
+  background: var(--primary);
+  color: var(--bg-darker);
+  padding: 4px 8px;
+  font-size: 8px;
+  border: 2px solid var(--bg-darker);
+}
+
+.habitat-badge {
+  background: var(--secondary);
+  color: var(--text);
+  padding: 4px 8px;
+  font-size: 8px;
+  border: 2px solid var(--bg-darker);
+}
+
+.product-description {
+  font-size: 10px;
+  line-height: 1.6;
+  color: var(--text-dim);
+  flex: 1;
+  margin-bottom: 15px;
+}
+
+.product-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-top: auto;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.price-section {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.price {
+  font-size: 18px;
+  color: var(--success);
+  text-shadow: 0 0 10px rgba(6, 255, 165, 0.5);
+}
+
+.stock {
+  font-size: 8px;
+  color: var(--text-dim);
+}
+
+.product-card button {
+  font-size: 10px;
+  padding: 8px 16px;
+}
+

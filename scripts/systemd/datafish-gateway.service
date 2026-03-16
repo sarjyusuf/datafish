@@ -1,0 +1,25 @@
+[Unit]
+Description=DataFish API Gateway (Node.js/Express)
+After=network.target datafish-notification.service datafish-product.service datafish-order.service
+
+[Service]
+Type=simple
+User=ec2-user
+WorkingDirectory=/home/ec2-user/DataFish/api-gateway
+ExecStart=/usr/bin/node /home/ec2-user/DataFish/api-gateway/server.js
+Restart=always
+RestartSec=10
+Environment="PORT=8080"
+Environment="DD_SERVICE=datafish-api-gateway"
+Environment="NOTIFICATION_SERVICE_URL=http://localhost:8083"
+Environment="PRODUCT_SERVICE_URL=http://localhost:8081"
+Environment="ORDER_SERVICE_URL=http://localhost:8082"
+
+# Logging
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=datafish-gateway
+
+[Install]
+WantedBy=multi-user.target
+

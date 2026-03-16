@@ -1,0 +1,20 @@
+[Unit]
+Description=DataFish Analytics Service
+After=network.target
+
+[Service]
+Type=simple
+User=ec2-user
+WorkingDirectory=/home/ec2-user/DataFish/analytics-service
+ExecStart=/home/ec2-user/DataFish/analytics-service/venv/bin/python main.py
+Restart=always
+RestartSec=5
+Environment="PORT=8086"
+Environment="DD_SERVICE=datafish-analytics-service"
+
+[Install]
+WantedBy=multi-user.target
+
+
+
+

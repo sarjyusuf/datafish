@@ -1,0 +1,22 @@
+[Unit]
+Description=DataFish Product Service (Java/Spring Boot)
+After=network.target
+
+[Service]
+Type=simple
+User=ec2-user
+WorkingDirectory=/home/ec2-user/DataFish/product-service
+ExecStart=/usr/bin/java -jar /home/ec2-user/DataFish/product-service/target/product-service-1.0.0.jar
+Restart=always
+RestartSec=10
+Environment="SERVER_PORT=8081"
+Environment="DD_SERVICE=datafish-product-service"
+
+# Logging
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=datafish-product
+
+[Install]
+WantedBy=multi-user.target
+

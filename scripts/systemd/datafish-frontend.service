@@ -1,0 +1,22 @@
+[Unit]
+Description=DataFish Frontend (Node.js/React/Vite)
+After=network.target datafish-gateway.service
+
+[Service]
+Type=simple
+User=ec2-user
+WorkingDirectory=/home/ec2-user/DataFish/frontend
+ExecStart=/usr/bin/npm start
+Restart=always
+RestartSec=10
+Environment="PORT=3000"
+Environment="DD_SERVICE=datafish-frontend"
+
+# Logging
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=datafish-frontend
+
+[Install]
+WantedBy=multi-user.target
+

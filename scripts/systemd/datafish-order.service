@@ -1,0 +1,26 @@
+[Unit]
+Description=DataFish Order Service (Python/FastAPI)
+After=network.target datafish-notification.service datafish-product.service
+
+[Service]
+Type=simple
+User=ec2-user
+WorkingDirectory=/home/ec2-user/DataFish/order-service
+ExecStart=/home/ec2-user/DataFish/order-service/venv/bin/python main.py
+Restart=always
+RestartSec=10
+Environment="PORT=8082"
+Environment="DD_SERVICE=datafish-order-service"
+Environment="PRODUCT_SERVICE_URL=http://localhost:8081"
+Environment="NOTIFICATION_SERVICE_URL=http://localhost:8083"
+Environment="PAYMENT_SERVICE_URL=http://localhost:8084"
+Environment="INVENTORY_SERVICE_URL=http://localhost:8085"
+
+# Logging
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=datafish-order
+
+[Install]
+WantedBy=multi-user.target
+
